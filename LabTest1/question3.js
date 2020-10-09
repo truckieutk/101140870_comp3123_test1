@@ -25,6 +25,31 @@ fs.unlink(path, (err) => {
     //file removed
 })
 
+const dirpath = require("./Logs")
+
+const removeDir = function(dirpath) {
+    if (fs.existsSync(dirpath)) {
+        const files = fs.readdirSync(dirpath)
+
+        if (files.length > 0) {
+            files.forEach(function(filename) {
+                if (fs.statSync(dirpath + "/" + filename).isDirectory()) {
+                    removeDir(dirpath + "/" + filename)
+                } else {
+                    fs.unlinkSync(dirpath + "/" + filename)
+                }
+            })
+        } else {
+            console.log("No files found in the directory.")
+        }
+    } else {
+        console.log("Directory path not found.")
+    }
+}
+
+const pathToDir = dirpath.join(__dirname, "Logs")
+removeDir(pathToDir)
+
 //remove directory
 const dir ='Logs';
 try {

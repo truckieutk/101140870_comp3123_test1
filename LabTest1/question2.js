@@ -20,10 +20,8 @@ function rejectedPromise() {
 }
 
 
-resolvedPromise()
-    .then((result) => console.log(result))
+resolvedPromise().then((result) => console.log(result))
     .catch(error => console.log(error))
 
-rejectedPromise()
-    .then((result) => console.log(result))
+rejectedPromise().then((result) => console.log(result))
     .catch(error => console.log(error))
