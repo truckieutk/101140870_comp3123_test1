@@ -5,16 +5,17 @@ var app = express()
 app.use(express.static('Logs'))
 
 //create directory
-var dir = './Logs';
+var directory = './Logs';
 
-if (!fs.existsSync(dir)){
-        fs.mkdirSync(dir);
+if (!fs.existsSync(directory)){
+        fs.mkdirSync(directory);
 }
 else
 {
     console.log("Directory already exist");
 }
 
+//create 10 files
 
 for(let i=0; i<10; i++) {
     fs.writeFile('./Logs/log.txt','Hello', (err,data) => {
@@ -33,8 +34,6 @@ fs.unlink(path, (err) => {
         console.error(err)
         return;
     }
-
-    //file removed
 })
 
 const dirpath = require("./Logs")
