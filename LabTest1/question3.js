@@ -36,6 +36,8 @@ fs.unlink(path, (err) => {
     }
 })
 
+//remove all files in a directory
+
 const dirpath = require("./Logs")
 
 const removeDir = function(dirpath) {
