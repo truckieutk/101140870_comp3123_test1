@@ -4,6 +4,18 @@ var app = express()
 
 app.use(express.static('Logs'))
 
+//create directory
+var dir = './Logs';
+
+if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+}
+else
+{
+    console.log("Directory already exist");
+}
+
+
 for(let i=0; i<10; i++) {
     fs.writeFile('./Logs/log.txt','Hello', (err,data) => {
         if (err) {
